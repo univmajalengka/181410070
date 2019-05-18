@@ -1,6 +1,6 @@
 // array of structures
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <sstream>
 using namespace std;
 struct tournament_t {
