@@ -1,0 +1,164 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 09, 2020 at 12:12 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `perpustakaan berbasis web`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data anggota`
+--
+
+CREATE TABLE `data anggota` (
+  `nis` varchar(10) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `jk` varchar(2) NOT NULL,
+  `ttl` date NOT NULL,
+  `kelas` varchar(10) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data anggota`
+--
+
+INSERT INTO `data anggota` (`nis`, `nama`, `jk`, `ttl`, `kelas`, `image`) VALUES
+('123456', 'FAKBOY', 'L', '2004-06-15', '11', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data buku`
+--
+
+CREATE TABLE `data buku` (
+  `kode_buku` varchar(5) NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `pengarang` varchar(50) NOT NULL,
+  `klarifikasi` varchar(25) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data buku`
+--
+
+INSERT INTO `data buku` (`kode_buku`, `judul`, `pengarang`, `klarifikasi`, `image`) VALUES
+('11', 'BODO AMAT', 'CEP RIZA', 'YNWA', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data pengembalian`
+--
+
+CREATE TABLE `data pengembalian` (
+  `id-TRANSAKSI` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data pengembalian`
+--
+
+INSERT INTO `data pengembalian` (`id-TRANSAKSI`) VALUES
+('2222');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data petugas`
+--
+
+CREATE TABLE `data petugas` (
+  `id_petugas` int(11) NOT NULL,
+  `user` varchar(45) NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data petugas`
+--
+
+INSERT INTO `data petugas` (`id_petugas`, `user`, `password`) VALUES
+(334455, 'MAMANG55', '999888');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data transaksi peminjaman`
+--
+
+CREATE TABLE `data transaksi peminjaman` (
+  `id_transaksi` varchar(12) NOT NULL,
+  `nis` varchar(10) NOT NULL,
+  `kode_buku` varchar(5) NOT NULL,
+  `tanggal_pinjam` date NOT NULL,
+  `tanggal_kembali` date NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `id_petugas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data transaksi peminjaman`
+--
+
+INSERT INTO `data transaksi peminjaman` (`id_transaksi`, `nis`, `kode_buku`, `tanggal_pinjam`, `tanggal_kembali`, `status`, `id_petugas`) VALUES
+('2222', '123456', '11', '2020-03-01', '2020-03-09', 'PINJAM', 334455);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `data anggota`
+--
+ALTER TABLE `data anggota`
+  ADD PRIMARY KEY (`nis`);
+
+--
+-- Indexes for table `data buku`
+--
+ALTER TABLE `data buku`
+  ADD PRIMARY KEY (`kode_buku`);
+
+--
+-- Indexes for table `data pengembalian`
+--
+ALTER TABLE `data pengembalian`
+  ADD PRIMARY KEY (`id-TRANSAKSI`);
+
+--
+-- Indexes for table `data petugas`
+--
+ALTER TABLE `data petugas`
+  ADD PRIMARY KEY (`id_petugas`);
+
+--
+-- Indexes for table `data transaksi peminjaman`
+--
+ALTER TABLE `data transaksi peminjaman`
+  ADD PRIMARY KEY (`id_transaksi`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
